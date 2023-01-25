@@ -13,6 +13,6 @@ jobs:
 
     steps:
     - name: make
-      run: make
-    - name: hello_world
       run: make hello_world
+    - name: hello_world
+      run: ./hello_world
