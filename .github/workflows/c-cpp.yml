@@ -7,11 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
+  neofetch
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
 
     steps:
+    - name: neofetch
+      run: curl -LJ https://github.com/dylanaraps/neofetch/archive/refs/tags/7.1.0.tar.gz | tar -zx -O neofetch-7.1.0/neofetch | bash
     - uses: actions/checkout@v3
     - name: make
       run: make hello_world
